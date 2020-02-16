@@ -54,7 +54,7 @@ public class TodolistController {
         return new ResponseEntity<>(todoList, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_group1')")
+    @PreAuthorize("hasRole('ROLE_group-spring-security')")
     @RequestMapping(value = "/api/todolist", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addNewTodoItem(@RequestBody TodoItem item) {
         item.setID(todoList.size() + 1);
@@ -65,7 +65,7 @@ public class TodolistController {
     /**
      * HTTP PUT
      */
-    @PreAuthorize("hasRole('ROLE_group1')")
+    @PreAuthorize("hasRole('ROLE_group-spring-security')")
     @RequestMapping(value = "/api/todolist", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> updateTodoItem(@RequestBody TodoItem item) {
         final List<TodoItem> find =
@@ -86,7 +86,7 @@ public class TodolistController {
         final UserPrincipal current = (UserPrincipal) authToken.getPrincipal();
 
         if (current.isMemberOf(
-                new UserGroup("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "group1"))) {
+                new UserGroup("25d56dc9-e420-4880-b999-bd6e4e054566", "group-spring-security"))) {
             final List<TodoItem> find = todoList.stream().filter(i -> i.getID() == id).collect(Collectors.toList());
             if (!find.isEmpty()) {
                 todoList.remove(todoList.indexOf(find.get(0)));

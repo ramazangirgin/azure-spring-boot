@@ -15,12 +15,12 @@ angular.module('todoApp', ['ngRoute', 'MsalAngular'])
         }).otherwise({redirectTo: "/Home"});
 
         window.applicationConfig = {
-            clientID: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+            clientID: 'c78882c3-8f3d-48ad-b0f4-48cb94cb09ab'
         };
 
         msalProvider.init(
             {
-                authority: 'https://login.microsoftonline.com/xxxorg.onmicrosoft.com',
+                authority: 'https://login.microsoftonline.com/girginactivedirectory.onmicrosoft.com',
                 clientID: applicationConfig.clientID,
                 cacheLocation: 'localStorage',
                 postLogoutRedirectUri: 'http://localhost:8080/logout',
