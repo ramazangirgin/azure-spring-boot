@@ -21,13 +21,14 @@ public class MainController {
 
     @GetMapping("/authorized")
     @ResponseBody
-    @PreAuthorize("hasRole('ROLE_User')")
+    @PreAuthorize("hasRole('ROLE_group-spring-security')")
     public String onlyAuthorizedUsers() {
         return "authorized endpoint response";
     }
 
     @GetMapping("/admin/demo")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_group-spring-security-admin')")
     // For demo purposes for this endpoint we configure the required role in the AADWebSecurityConfig class.
     // However, it is advisable to use method level security with @PreAuthorize("hasRole('xxx')")
     public String onlyForAdmins() {
